@@ -2,3 +2,4 @@ build/*
 devel/*
 logs/*
 *compile_commands.json
+.catkin_tools*
