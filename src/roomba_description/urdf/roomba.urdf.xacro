@@ -1,0 +1,96 @@
+<robot name="roomba" xmlns:xacro="http://ros.org/wiki/xacro">
+	<material name="white">
+		<color rgba="1 1 1 1" />
+	</material>
+
+	<material name="grey">
+		<color rgba="0.4 0.4 0.4 1" />
+	</material>
+
+	<link name="base_link">
+		<visual>
+			<origin xyz="0 0 0" rpy="0 0 0" />
+			<geometry>
+				<cylinder length="0.08" radius="0.17" />
+			</geometry>
+			<material name="white" />
+		</visual>
+		<collision>
+			<origin xyz="0 0 0" rpy="0 0 0" />
+			<geometry>
+				<cylinder length="0.08" radius="0.17" />
+			</geometry>
+		</collision>
+	</link>
+
+	<xacro:macro name="wheel" params="name offset">
+		<link name="wheel_${name}">
+			<visual>
+				<origin xyz="0 0 0" rpy="1.5707 0 0" />
+				<geometry>
+					<cylinder length="0.02" radius="0.03" />
+				</geometry>
+				<material name="grey" />
+			</visual>
+			<collision>
+				<origin xyz="0 0 0" rpy="1.5707 0 0" />
+				<geometry>
+					<cylinder length="0.02" radius="0.03" />
+				</geometry>
+			</collision>
+		</link>
+
+		<joint name="wheel_${name}_spin" type="continuous">
+			<parent link="base_link" />
+			<child link="wheel_${name}" />
+			<origin xyz="${offset} 0 -0.025" rpy="0 0 1.5707" />
+			<axis xyz="0 1 0" />
+		</joint>
+	</xacro:macro>
+
+	<xacro:wheel name="left" offset="-0.11" />
+	<xacro:wheel name="right" offset="0.11" />
+
+	<link name="main_brush">
+		<visual>
+			<origin xyz="0 0 0" rpy="0 0 0" />
+			<geometry>
+				<box size="0.15 0.04 0.01" />
+			</geometry>
+		</visual>
+		<collision>
+			<origin xyz="0 0 0" rpy="0 0 0" />
+			<geometry>
+				<box size="0.15 0.04 0.01" />
+			</geometry>
+		</collision>
+	</link>
+
+	<link name="side_brush">
+		<visual>
+			<origin xyz="0 0 0" rpy="0 0 0" />
+			<geometry>
+				<box size="0.07 0.02 0.02" />
+			</geometry>
+		</visual>
+		<collision>
+			<origin xyz="0 0 0" rpy="0 0 0" />
+			<geometry>
+				<box size="0.07 0.04 0.01" />
+			</geometry>
+		</collision>
+	</link>
+
+	<joint name="main_brush_spin" type="continuous">
+		<parent link="base_link" />
+		<child link="main_brush" />
+		<origin xyz="0.00 0.03 -0.03" rpy="0 0 0" />
+		<axis xyz="1 0 0" />
+	</joint>
+	<joint name="side_brush_spin" type="continuous">
+		<parent link="base_link" />
+		<child link="side_brush" />
+		<origin xyz="0.15 -0.03 -0.04" rpy="0 0 0" />
+		<axis xyz="0 0 1" />
+	</joint>
+</robot>
