@@ -91,8 +91,8 @@ class Roomba:
             for i in self._packets:
                 self.device.write(chr(i))
         self._i = 0
-        self._read_data()
-        while self._i != 0:
+        rospy.sleep(0.005)
+        for i in self._packets:
             self._read_data()
         print("B")
 
