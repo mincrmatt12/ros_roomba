@@ -90,10 +90,11 @@ class Roomba:
             self.device.write(chr(len(self._packets)))
             for i in self._packets:
                 self.device.write(chr(i))
-            self._i = 0
+        self._i = 0
+        self._read_data()
+        while self._i != 0:
             self._read_data()
-            while self._i != 0:
-                self._read_data()
+        print("B")
 
     def _read_data(self):
         pid = self._packets[self._i]

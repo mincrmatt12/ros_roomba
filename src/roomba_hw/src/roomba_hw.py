@@ -49,12 +49,14 @@ state_message.effort   = [0, 0, 0, 0]
 last_time = rospy.Time.now()
 
 while not rospy.is_shutdown():
+    print("A")
     rate.sleep()
     dur = rospy.Time.now() - last_time
     last_time = rospy.Time.now()
 
     rba.update_fake_joints(dur.to_sec())
     rba.read_sensor()
+
     pub_bumpers.publish(rba.bumpers)
     pub_drops.publish(rba.drops)
     pub_wall.publish(rba.wall)
