@@ -42,7 +42,7 @@ pub_states      = rospy.Publisher("/joint_states"  , sensor_msgs.msg.JointState 
 
 state_message = sensor_msgs.msg.JointState()
 
-state_message.names    = ["wheel_left_spin", "wheel_right_spin", "main_brush_spin", "side_brush_spin"]
+state_message.name     = ["wheel_left_spin", "wheel_right_spin", "main_brush_spin", "side_brush_spin"]
 state_message.velocity = [0, 0, 0, 0]
 state_message.effort   = [0, 0, 0, 0]
 
