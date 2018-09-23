@@ -52,6 +52,7 @@ add_message_files(
   Vacum.msg
   Note.msg
   Song.msg
+  BoolArray.msg
 )
 
 ## Generate services in the 'srv' folder
