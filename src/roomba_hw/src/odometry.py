@@ -13,10 +13,10 @@ class Odometry:
         # convert distance to meter, ang to radians
         ang = math.radians(ang)
 
-        self.x += math.cos(ang) * dist
-        self.y += math.sin(ang) * dist
-
         self.ang += ang
+        
+        self.x += math.cos(self.ang) * dist
+        self.y += math.sin(self.ang) * dist
 
     def to_msg(self):
         # convert to an odometry message
@@ -35,7 +35,7 @@ class Odometry:
 
         m.pose.pose.position.x = self.x
         m.pose.pose.position.y = self.y
-        quat = tf.transformations.quaternion_about_axis(self.ang, (0, 0, 1))
+        quat = tf.transformations.quaternion_from_euler(0, 0, self.ang, 'sxyz')
         m.pose.pose.orientation.x = quat[0]
         m.pose.pose.orientation.y = quat[1]
         m.pose.pose.orientation.z = quat[2]

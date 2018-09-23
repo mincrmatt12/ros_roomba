@@ -10,7 +10,7 @@ wheel_radius = 0.06
 
 class Roomba:
     def __init__(self, device_path):
-        self.device = serial.Serial(device_path, 115200)
+        self.device = serial.Serial(device_path, 115200, timeout=0.5)
         self.write_lock = threading.Lock()
 
         self.device.write(chr(128) * 3)
@@ -176,6 +176,7 @@ class Roomba:
             distance *= wheel_radius
 
             angle = (((right / encoder_counts)*2*math.pi*wheel_radius) - ((left / encoder_counts)*2*math.pi*wheel_radius)) / 0.28
+            print("ang", angle)
             self.odometry.integrate(distance, angle)
 
             self._odom_last = [self._odom_left, self._odom_right]
