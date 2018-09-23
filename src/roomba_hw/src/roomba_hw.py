@@ -90,6 +90,8 @@ while not rospy.is_shutdown():
     pub_odometry.publish(rba.odometry.to_msg())
 
     state_message.position = rba.joint_positions[:]
+    state_message.header.stamp = rospy.Time.now()
+    state_message.header.frame_id = "base_link"
     pub_states.publish(state_message)
 
 rba.device.write(chr(173))
