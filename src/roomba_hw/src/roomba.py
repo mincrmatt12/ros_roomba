@@ -56,8 +56,7 @@ class Roomba:
         right = min(500, max(-500, right))
         print(left, right)
 
-        with self.write_lock:
-            self.device.write(struct.pack("!Bhh", 145, left, right))
+        self.device.write(struct.pack("!Bhh", 145, left, right))
 
     def send_vacum(self, vacum, brush, side, side_clockwise):
         bitfield = 0
@@ -68,8 +67,7 @@ class Roomba:
 
         self._unmeasured = [brush, side]
 
-        with self.write_lock:
-            self.device.write(chr(138) + chr(bitfield))
+        self.device.write(chr(138) + chr(bitfield))
 
     def update_fake_joints(self, duration):
         self.joint_positions[2] += duration * int(self._unmeasured[0]) * 12
@@ -81,15 +79,13 @@ class Roomba:
         bitfield += int(debris) << 1
         bitfield += int(debris)
 
-        with self.write_lock:
-            self.device.write(struct.pack("!BBBB", 139, bitfield, cc, ci))
+        self.device.write(struct.pack("!BBBB", 139, bitfield, cc, ci))
 
     def read_sensor(self):
-        with self.write_lock:
-            self.device.write(chr(149))
-            self.device.write(chr(len(self._packets)))
-            for i in self._packets:
-                self.device.write(chr(i))
+        self.device.write(chr(149))
+        self.device.write(chr(len(self._packets)))
+        for i in self._packets:
+            self.device.write(chr(i))
         self._i = 0
         rospy.sleep(0.005)
         for i in self._packets:
