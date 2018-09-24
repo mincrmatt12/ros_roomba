@@ -63,9 +63,9 @@ while not rospy.is_shutdown():
 
     rba.update_fake_joints(dur.to_sec())
     rba.read_sensor()
-    rba.send_drive(drive)
-    rba.send_leds(leds)
-    rba.send_vacum(vacum)
+    rba.send_drive(*drive)
+    rba.send_leds(*leds)
+    rba.send_vacum(*vacum)
 
     pub_bumpers.publish(rba.bumpers)
     pub_drops.publish(rba.drops)
