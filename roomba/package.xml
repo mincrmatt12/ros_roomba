@@ -51,15 +51,12 @@
   <buildtool_depend>catkin</buildtool_depend>
   <build_depend>roomba_description</build_depend>
   <build_depend>roomba_hw</build_depend>
-  <build_depend>roomba_localization</build_depend>
   <build_depend>roomba_msgs</build_depend>
   <build_export_depend>roomba_description</build_export_depend>
   <build_export_depend>roomba_hw</build_export_depend>
-  <build_export_depend>roomba_localization</build_export_depend>
   <build_export_depend>roomba_msgs</build_export_depend>
   <exec_depend>roomba_description</exec_depend>
   <exec_depend>roomba_hw</exec_depend>
-  <exec_depend>roomba_localization</exec_depend>
   <exec_depend>roomba_msgs</exec_depend>
 
 

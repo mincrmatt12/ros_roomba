@@ -10,7 +10,6 @@ project(roomba)
 find_package(catkin REQUIRED COMPONENTS
   roomba_description
   roomba_hw
-  roomba_localization
   roomba_msgs
 )
 
