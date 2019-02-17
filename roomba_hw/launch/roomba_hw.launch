@@ -1,6 +1,6 @@
 <launch>
-	<arg name="device" default="/dev/ttyACM0" />
-	<node pkg="roomba_hw" type="roomba_hw.py" name="roomba_hw">
+	<arg name="device" default="/dev/ttyAMA0" />
+	<node pkg="roomba_hw" type="passive_bot.py" name="roomba_hw">
 		<param name="~dev" value="$(arg device)" />
 	</node>
 </launch>
