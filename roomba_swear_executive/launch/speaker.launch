@@ -1,0 +1,4 @@
+<launch>
+	<node name="soundplay_node" pkg="sound_play" type="soundplay_node.py"/>
+	<node name="swear_executive" pkg="roomba_swear_executive" type="swear_executive.py" />
+</launch>

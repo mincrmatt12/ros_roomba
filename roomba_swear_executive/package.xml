@@ -49,16 +49,13 @@
   <!-- Use doc_depend for packages you need only for building documentation: -->
   <!--   <doc_depend>doxygen</doc_depend> -->
   <buildtool_depend>catkin</buildtool_depend>
-  <build_depend>audio_common</build_depend>
   <build_depend>roomba_msgs</build_depend>
   <build_depend>rospy</build_depend>
-  <build_export_depend>audio_common</build_export_depend>
   <build_export_depend>roomba_msgs</build_export_depend>
   <build_export_depend>rospy</build_export_depend>
-  <exec_depend>audio_common</exec_depend>
   <exec_depend>roomba_msgs</exec_depend>
   <exec_depend>rospy</exec_depend>
-
+  <depend>sound_play</depend>
 
   <!-- The export tag contains other, unspecified, tags -->
   <export>
