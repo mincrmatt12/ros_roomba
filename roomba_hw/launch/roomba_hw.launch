@@ -1,6 +1,6 @@
 <launch>
 	<arg name="device" default="/dev/ttyUSB0" />
 	<node pkg="roomba_hw" type="passive_bot.py" name="roomba_hw">
-		<param name="~dev" value="$(arg device)" />
+		<param name="dev" value="$(arg device)" />
 	</node>
 </launch>
