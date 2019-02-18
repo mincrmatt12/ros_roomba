@@ -16,13 +16,16 @@ vel = 0
 
 def update_bumps():
     global bumps
+    global cliffs
     device.write("\x8e\x07")
     data = ord(device.read())
 
-    bumps[0] = data & 2 == 2
-    bumps[1] = data & 1 == 1
-    cliffs[0] = data & 4 == 4
-    cliffs[1] = data & 8 == 8
+    bumps[0] = (data & 2) == 2
+    bumps[1] = (data & 1) == 1
+    cliffs[0] = (data & 4) == 4
+    cliffs[1] = (data & 8) == 8
+
+    print bumps, cliffs
 
 def update_velocity():
     global last_time
