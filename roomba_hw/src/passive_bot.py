@@ -6,7 +6,7 @@ from roomba_msgs.msg import BoolArray
 import std_msgs.msg
 
 rospy.init_node("passive_bot")
-device = serial.Serial(port=rospy.get_param("device", default="/dev/ttyAMA0"), 115200)
+device = serial.Serial(rospy.get_param("device", default="/dev/ttyAMA0"), 115200)
 
 device.write(chr(128))
 bumps = [False, False]
